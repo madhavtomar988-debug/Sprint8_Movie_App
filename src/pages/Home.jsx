@@ -1,11 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { getPopularMovies, searchMovies } from "../services/tmdb";
 import MovieCard from "../components/MovieCard";
+import { getMovieSuggestion } from "../services/gemini";
 
 function Home() {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [mood, setMood] = useState("");
+  const [loadingAI, setLoadingAI] = useState(false);
 
   const observer = useRef();
 
@@ -71,6 +74,30 @@ function Home() {
       alert("Already in Favorites");
     }
   };
+  const handleMoodSearch = async () => {
+  if (!mood.trim()) return;
+
+  setLoadingAI(true);
+
+  try {
+    const movieTitle = await getMovieSuggestion(mood);
+
+    if (!movieTitle) {
+      alert("AI could not suggest a movie.");
+      return;
+    }
+
+    setSearch(movieTitle);
+
+    const data = await searchMovies(movieTitle);
+    setMovies(data);
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong.");
+  } finally {
+    setLoadingAI(false);
+  }
+};
 
   // Infinite Scroll
   const lastMovieElementRef = (node) => {
@@ -108,9 +135,39 @@ function Home() {
             marginRight: "10px",
           }}
         />
+        
 
         
       </div>
+      <div
+  style={{
+    textAlign: "center",
+    marginBottom: "30px",
+  }}
+>
+  <input
+    type="text"
+    placeholder="Enter your mood (happy, sad, action, romantic...)"
+    value={mood}
+    onChange={(e) => setMood(e.target.value)}
+    style={{
+      padding: "10px",
+      width: "320px",
+      marginRight: "10px",
+    }}
+  />
+
+  <button
+    onClick={handleMoodSearch}
+    disabled={loadingAI}
+    style={{
+      padding: "10px 18px",
+      cursor: "pointer",
+    }}
+  >
+    {loadingAI ? "Thinking..." : "🎬 AI Mood Match"}
+  </button>
+</div>
 
       <div
         style={{

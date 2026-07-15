@@ -1,4 +1,7 @@
 function MovieCard({ movie, onFavorite }) {
+  const poster = movie.poster_path
+  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+  : "https://via.placeholder.com/500x750?text=No+Image";
   return (
     <div
       style={{
@@ -24,17 +27,24 @@ function MovieCard({ movie, onFavorite }) {
       </button>
 
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title}
-        loading="lazy"
-        style={{ width: "100%", borderRadius: "10px" }}
-      />
+  src={poster}
+  alt={movie.title}
+  loading="lazy"
+  onError={(e) => {
+    e.target.src =
+      "https://via.placeholder.com/500x750?text=No+Image";
+  }}
+  style={{
+    width: "100%",
+    borderRadius: "10px",
+  }}
+/>
 
       <h3>{movie.title}</h3>
 
-      <p>⭐ {movie.vote_average}</p>
+      <p>⭐ {movie.vote_average || "N/A"}</p>
 
-      <p>📅 {movie.release_date}</p>
+      <p>📅 {movie.release_date || "Unknown"}</p>
     </div>
   );
 }
