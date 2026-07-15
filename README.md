@@ -1,16 +1,81 @@
-# React + Vite
+# 🎬 Sprint 8 Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Netflix-style Movie Discovery App built using React, Vite, TMDB API and Gemini AI.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://silly-cascaron-09b27e.netlify.app/
 
-## React Compiler
+## 📂 GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://github.com/madhavtomar988-debug/Sprint8_Movie_App
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🎥 Browse Popular Movies
+- 🔍 Search Movies
+- ❤️ Add Movies to Favorites
+- 💾 Favorites stored using LocalStorage
+- ♾️ Infinite Scroll
+- ⏳ Search Debouncing (500ms)
+- 🖼️ Lazy Loading Images
+- 🤖 AI Mood Matcher using Gemini API
+- 📱 Responsive Design
+
+---
+
+## 🛠️ Technologies Used
+
+- React
+- Vite
+- JavaScript
+- TMDB API
+- Gemini API
+- Axios
+- React Router DOM
+- LocalStorage
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/madhavtomar988-debug/Sprint8_Movie_App.git
+
+cd Sprint8_Movie_App
+
+npm install
+
+npm run dev
+```
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the root directory.
+
+```env
+VITE_TMDB_API_KEY=YOUR_TMDB_API_KEY
+VITE_GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+```
+
+---
+
+## 📸 Features Demonstrated
+
+- Popular Movies
+- Movie Search
+- Infinite Scroll
+- Favorites
+- AI Mood Matcher
+- Lazy Loading
+- Responsive UI
+
+---
+
+## 👨‍💻 Author
+
+Madhav Singh Tomar
